@@ -1,0 +1,31 @@
+<div class="relative flex flex-col gap-1">
+  <app-label [label]="label()" [required]="required()" [hints]="hints()"></app-label>
+  <input
+    [ngModel]="value()"
+    (ngModelChange)="setValue($event)"
+    [placeholder]="placeholder()"
+    [maxlength]="maxLength()"
+    (input)="handleInput($event)"
+    type="email"
+    (blur)="handleBlur()"
+  />
+  <!-- email selector -->
+  @let v = value();
+  @if (isOpen()) {
+    <ul
+      class="absolute bottom-0 left-0 z-10 flex flex-col w-full gap-1 p-1 overflow-y-auto text-sm translate-y-full bg-white border rounded-md shadow-md max-h-52"
+    >
+      @for (email of emails(); track email) {
+        <li
+          class="px-3 py-1.5 cursor-pointer hover:bg-blue-50 rounded hover:text-blue-500"
+          (click)="selectEmail(v + email)"
+          [class.bg-blue-50]="$index === index()"
+          [class.text-blue-500]="$index === index()"
+        >
+          {{ v + email }}
+        </li>
+      }
+    </ul>
+  }
+</div>
+<app-error-message [control]="control" [name]="label()"></app-error-message>

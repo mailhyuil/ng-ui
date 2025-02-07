@@ -1,0 +1,12 @@
+@let v = value();
+
+<li
+  class="px-3 py-1.5 cursor-pointer hover:bg-blue-50 rounded hover:text-blue-500 list-none"
+  [class.bg-blue-50]="selectedValue$.value === v"
+  [class.text-blue-500]="selectedValue$.value === v"
+  [class.text-gray-400]="selectedValue$.value !== v"
+  [class.hidden]="hidden()"
+  (click)="_select()"
+>
+  <ng-content></ng-content>
+</li>

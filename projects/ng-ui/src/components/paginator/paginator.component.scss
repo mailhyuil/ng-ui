@@ -1,0 +1,15 @@
+button {
+  @apply size-8 flex justify-center items-center text-sm rounded-full hover:bg-neutral-100;
+
+  &.active {
+    @apply bg-primary text-white;
+  }
+
+  &.disabled {
+    @apply cursor-not-allowed;
+
+    & .icon {
+      @apply bg-neutral-400;
+    }
+  }
+}

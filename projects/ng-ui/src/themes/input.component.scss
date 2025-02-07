@@ -1,0 +1,51 @@
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+:host {
+  textarea,
+  input {
+    @apply w-full px-3 py-1.5 text-sm transition-all duration-300 outline outline-2 outline-gray-300 rounded-md focus:outline-blue-400 hover:outline-blue-300;
+  }
+}
+
+/* 유효한 상태 */
+:host.ng-valid.ng-dirty {
+  input,
+  textarea {
+    outline-color: #4caf50;
+  }
+  ::ng-deep app-label label {
+    color: #4caf50;
+    transition-property: color;
+    transition-duration: 300ms;
+  }
+}
+
+/* 유효하지 않은 상태 */
+:host.ng-invalid.ng-dirty {
+  input,
+  textarea {
+    outline-color: #f44336;
+  }
+  ::ng-deep app-label label {
+    color: #f44336;
+    transition-property: color;
+    transition-duration: 300ms;
+  }
+}
+
+/* 유효하지 않은 상태 */
+:host.ng-invalid.ng-touched {
+  input,
+  textarea {
+    outline-color: #f44336;
+  }
+  ::ng-deep app-label label {
+    color: #f44336;
+    transition-property: color;
+    transition-duration: 300ms;
+  }
+}

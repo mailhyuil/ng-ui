@@ -1,0 +1,28 @@
+@if (pageInfo(); as pageInfo) {
+  <div class="flex items-center justify-center gap-2">
+    <button (click)="go(1)" [class.disabled]="!canGoPrev()">
+      <span
+        class="icon icon-[mdi:chevron-double-left] size-5 bg-neutral-700"
+      ></span>
+    </button>
+    <button (click)="goPrev()" [class.disabled]="!canGoPrev()">
+      <span class="icon icon-[mdi--chevron-left] size-5 bg-neutral-700"></span>
+    </button>
+    @for (page of pages(); track page) {
+      <button [class.active]="pageIndex() === page" (click)="go(page)">
+        {{ page }}
+      </button>
+    }
+    <button (click)="goNext()" [class.disabled]="!canGoNext()">
+      <span class="icon icon-[mdi--chevron-right] size-5 bg-neutral-700"></span>
+    </button>
+    <button
+      (click)="go(pageInfo.totalPageCount)"
+      [class.disabled]="!canGoNext()"
+    >
+      <span
+        class="icon icon-[mdi--chevron-double-right] size-5 bg-neutral-700"
+      ></span>
+    </button>
+  </div>
+}

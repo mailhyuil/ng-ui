@@ -1,0 +1,12 @@
+@if (file) {
+  <button
+    (click)="download()"
+    class="flex items-center gap-2 px-2 py-1 bg-white border rounded-lg mx-h-52 hover:bg-gray-50"
+  >
+    <span
+      class="size-5 bg-primary icon-[material-symbols--download-2-outline]"
+    ></span>
+    <p class="flex-1 line-clamp-1">{{ file.name }}</p>
+    <p class="text-xs text-gray-500">({{ file.size | fileSize }})</p>
+  </button>
+}

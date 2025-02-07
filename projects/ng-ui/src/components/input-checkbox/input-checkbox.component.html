@@ -1,0 +1,27 @@
+@let v = value();
+
+<label class="flex items-center gap-3 select-none group max-w">
+  <div
+    class="relative flex items-center justify-center w-5 h-5 transition-all duration-200 border-2 rounded-sm cursor-pointer shrink-0"
+    [ngClass]="
+      v ? 'border-primary-500 bg-primary-500' : 'border-gray-400 bg-white'
+    "
+    (click)="toggle()"
+  >
+    <div
+      class="absolute w-0 h-0 rounded-full group-hover:bg-primary-50 -z-10 group-hover:h-9 group-hover:w-9 group-hover:transition-all group-hover:duration-200 group-hover:ease-in-out"
+    ></div>
+    @if (v) {
+      <span class="icon-[mdi--check] size-4 text-white bg-white"></span>
+    }
+  </div>
+  <div
+    class="flex flex-col gap-1 text-sm cursor-pointer"
+    (click)="toggle()"
+    [class.active]="v"
+  >
+    <div class="text-sm">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</label>

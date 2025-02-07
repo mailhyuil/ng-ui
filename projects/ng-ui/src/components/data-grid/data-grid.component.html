@@ -1,0 +1,36 @@
+<div class="flex flex-col gap-2">
+  <div class="flex items-center justify-between">
+    <app-input-search placeholder="검색어를 입력해주세요"></app-input-search>
+    <div>
+      <ng-content select="button"></ng-content>
+    </div>
+  </div>
+  <dl class="text-sm">
+    <div class="flex px-3 py-2 font-semibold border-b-2">
+      @for (col of cols(); track col.name) {
+        <dt class="flex-1 text-start">{{ col.name }}</dt>
+      }
+    </div>
+    <div class="flex flex-col">
+      @for (row of rowData() | paginate: paginateOptions(); track $index) {
+        <div class="flex px-3 py-2 border-b" [class.bg-gray-50]="$even">
+          @for (r of row; track $index) {
+            <dd class="flex-1 text-start">
+              {{ r | slice: 0 : 25 }}{{ r > 25 ? "..." : undefined }}
+            </dd>
+          }
+        </div>
+      }
+    </div>
+  </dl>
+  <div class="flex justify-between">
+    <app-select-group [ngModel]="pageSize()" class="w-1/12" direction="up">
+      @for (size of pageSizes(); track size) {
+        <app-select-item [value]="size">{{ size }}</app-select-item>
+      }
+    </app-select-group>
+    <pagination-controls
+      (pageChange)="pageIndex.set($event)"
+    ></pagination-controls>
+  </div>
+</div>

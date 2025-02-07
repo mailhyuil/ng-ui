@@ -1,0 +1,7 @@
+@let value = env();
+
+@if(value !== 'prod'){
+<div class="absolute z-[9999999] right-5 bottom-5 pointer-events-none">
+  <span class="font-light text-yellow-500/50">{{ envMap[value] }}</span>
+</div>
+}

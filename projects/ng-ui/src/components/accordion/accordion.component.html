@@ -1,0 +1,51 @@
+<article
+  class="flex flex-col w-full gap-6 bg-white border border-gray-200 rounded-md select-none"
+>
+  <div
+    class="flex items-center w-full gap-2 p-5 pb-0 cursor-pointer"
+    (click)="toggle()"
+  >
+    <div class="flex items-center justify-between w-full">
+      <div class="flex items-center gap-3 min-w-max">
+        <h4 class="text-gray-700">{{ header() }}</h4>
+        <span
+          class="icon-[ic--round-keyboard-arrow-up] transition-all duration-300 ease-in-out bg-gray-500 size-6"
+          [class.rotate-180]="isOpen()"
+        ></span>
+        @let hintsValue = hints();
+        @if(hintsValue.length > 0){
+          @for(hint of hintsValue; track hint){
+          <app-hint>{{ hint }}</app-hint>
+          }
+        }
+      </div>
+      @let buttonTitleValue = buttonTitle();
+      @if (buttonTitleValue) {
+        <div>
+          <app-button (click)="clickButton($event)">
+            {{ buttonTitleValue }}
+          </app-button>
+        </div>
+      }
+    </div>
+    <div class="mr-auto cursor-default" (click)="slotClick($event)">
+      <ng-content select="[headerContent]" />
+    </div>
+    <div
+      class="flex items-center gap-2 ml-auto cursor-default"
+      (click)="slotClick($event)"
+    >
+      <ng-content select="[button]" />
+    </div>
+  </div>
+  <div class="flex flex-col transition-all duration-300">
+    @if (isOpen()) {
+      <div class="px-3">
+        <div class="w-full border-b"></div>
+      </div>
+      <div class="p-4">
+        <ng-content />
+      </div>
+    }
+  </div>
+</article>

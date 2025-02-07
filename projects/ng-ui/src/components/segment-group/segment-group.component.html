@@ -1,0 +1,11 @@
+<div #container class="relative flex items-center w-max">
+  <ng-content></ng-content>
+  <div class="absolute bottom-0 left-0 w-full">
+    <div class="relative w-full h-1">
+      <div
+        #index
+        class="absolute top-0 left-0 w-full h-full transition-transform duration-300 origin-left bg-primary-500"
+      ></div>
+    </div>
+  </div>
+</div>

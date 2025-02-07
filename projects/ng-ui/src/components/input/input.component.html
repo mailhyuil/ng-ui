@@ -1,0 +1,16 @@
+<div class="flex flex-col gap-1">
+  <app-label
+    [label]="label()"
+    [required]="required()"
+    [hints]="hints()"
+  ></app-label>
+  <input
+    [ngModel]="value()"
+    (ngModelChange)="setValue($event)"
+    [placeholder]="placeholder()"
+    [type]="type()"
+    [maxlength]="maxLength()"
+    (blur)="handleBlur()"
+  />
+</div>
+<app-error-message [control]="control" [name]="label()"></app-error-message>

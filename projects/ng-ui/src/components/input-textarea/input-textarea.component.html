@@ -1,0 +1,16 @@
+<div class="flex flex-col gap-1">
+  <app-label
+    [label]="label()"
+    [required]="required()"
+    [hints]="hints()"
+  ></app-label>
+  <textarea
+    class="min-h-56"
+    [ngModel]="value()"
+    (ngModelChange)="setValue($event)"
+    [placeholder]="placeholder()"
+    [maxlength]="maxLength()"
+    (blur)="handleBlur()"
+  ></textarea>
+</div>
+<app-error-message [control]="control" [name]="label()"></app-error-message>

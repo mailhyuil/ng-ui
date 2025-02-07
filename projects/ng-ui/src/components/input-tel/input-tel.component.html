@@ -1,0 +1,20 @@
+<div class="flex flex-col gap-1">
+  <div class="flex items-center gap-1">
+    <app-label
+      [label]="label()"
+      [required]="required()"
+      [hints]="hints"
+    ></app-label>
+  </div>
+  <input
+    numbersOnly
+    [ngModel]="value()"
+    (ngModelChange)="setValue($event)"
+    [placeholder]="placeholder()"
+    (keydown.space)="$event.preventDefault()"
+    [maxlength]="maxLength()"
+    type="tel"
+    (blur)="handleBlur()"
+  />
+</div>
+<app-error-message [control]="control" [name]="label()"></app-error-message>

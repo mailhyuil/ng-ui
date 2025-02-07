@@ -1,0 +1,46 @@
+<div class="flex justify-between p-4 border-b">
+  <div>
+    <h1 class="text-xl font-bold">{{ title() }}</h1>
+    <span class="text-sm text-gray-500">{{ breadcrumbs() }}</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <div class="flex items-center gap-5">
+      @if (auth(); as auth) {
+        <div class="flex items-center gap-2">
+          <div class="flex items-center gap-1">
+            <p class="text-sm text-gray-400">이름 :</p>
+            <p class="text-sm font-semibold">{{ auth.name }}</p>
+          </div>
+        </div>
+      }
+      <div class="relative">
+        <button
+          class="flex items-center justify-center p-2 leading-none rounded-lg hover:bg-gray-100"
+          (click)="toggleOpen()"
+          (clickOutside)="isOpen.set(false)"
+        >
+          <span
+            class="icon-[heroicons--user-16-solid] bg-gray-500 size-5"
+          ></span>
+        </button>
+        @if (isOpen()) {
+          <div
+            class="absolute right-0 z-50 p-2 translate-y-full bg-white border shadow-sm group rounded-xl -bottom-1"
+          >
+            <button
+              (click)="logout.emit()"
+              class="flex items-center justify-between gap-2 p-2 transition-all rounded-lg group-hover:bg-primary-50"
+            >
+              <span
+                class="icon-[heroicons--arrow-left-end-on-rectangle] size-5 bg-primary"
+              ></span>
+              <p class="text-sm transition-all group-hover:text-primary-300">
+                로그아웃
+              </p>
+            </button>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
