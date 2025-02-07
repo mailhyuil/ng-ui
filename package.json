@@ -1,5 +1,5 @@
 {
-  "name": "@mailhyuil/ng-libs",
+  "name": "libs",
   "version": "0.0.2",
   "scripts": {
     "ng": "ng",
@@ -9,8 +9,8 @@
     "lint": "ng lint",
     "build": "ng build ng-libs --configuration production",
     "pack": "cd dist/ng-libs && npm pack",
-    "patch": "npm version patch",
-    "publish": "npm run patch && npm run build && cd dist/ng-libs && npm publish --access public"
+    "patch": "npm version patch && cd projects/ng-libs && npm version patch && cd ../../",
+    "publish": "npm run patch && npm run build && cd dist/ng-libs && npm publish --access public && cd ../../"
   },
   "peerDependencies": {
     "@angular/animations": "^19.1.0",
