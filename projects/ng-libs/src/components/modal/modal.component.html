@@ -11,10 +11,28 @@
 <mh-modal-footer>
   <div class="flex w-full gap-2">
     @if (submit()) {
-    <mh-button (click)="dismiss()" expand>취소</mh-button>
-    <mh-button (click)="_submit()" expand color="danger">확인</mh-button>
+    <button
+      (click)="dismiss()"
+      class="text-center max-w-max disabled:opacity-50 rounded-md disabled:cursor-not-allowed size-full py-1.5 px-3 font-semibold text-sm transition-all duration-300 bg-danger-500"
+      type="button"
+    >
+      취소
+    </button>
+    <button
+      (click)="_submit()"
+      class="text-center max-w-max disabled:opacity-50 rounded-md disabled:cursor-not-allowed size-full py-1.5 px-3 font-semibold text-sm transition-all duration-300 bg-success-500"
+      type="button"
+    >
+      확인
+    </button>
     } @else {
-    <mh-button (click)="dismiss()" expand>확인</mh-button>
+    <button
+      (click)="dismiss()"
+      class="text-center w-full disabled:opacity-50 rounded-md disabled:cursor-not-allowed size-full py-1.5 px-3 font-semibold text-sm transition-all duration-300"
+      type="button"
+    >
+      확인
+    </button>
     }
   </div>
 </mh-modal-footer>

@@ -11,7 +11,10 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "@mailhyuil/ng-libs": ["./dist/ng-libs"],
-      "@mailhyuil/ng-libs/editor": ["./dist/ng-libs/editor"]
+      "@mailhyuil/ng-libs/editor": ["./dist/ng-libs/editor"],
+      "@mailhyuil/ng-libs/admin": ["./dist/ng-libs/admin"],
+      "@mailhyuil/ng-libs/youtube": ["./dist/ng-libs/youtube"],
+      "@mailhyuil/ng-libs/swiper": ["./dist/ng-libs/swiper"]
     },
     "skipLibCheck": true,
     "isolatedModules": true,
