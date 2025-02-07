@@ -10,7 +10,8 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "ng-libs": ["./dist/ng-libs"]
+      "@mailhyuil/ng-libs": ["./dist/ng-libs"],
+      "@mailhyuil/ng-libs/editor": ["./dist/ng-libs/editor"]
     },
     "skipLibCheck": true,
     "isolatedModules": true,

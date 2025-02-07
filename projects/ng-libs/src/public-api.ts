@@ -20,7 +20,6 @@ export * from './components/button/button.component';
 export * from './components/data-grid/data-grid.component';
 export * from './components/date-picker/date-picker.component';
 export * from './components/date-range/date-range.component';
-export * from './components/editor/editor.component';
 export * from './components/environment-badge/environment-badge.component';
 export * from './components/error-message/error-message.component';
 export * from './components/file-download-button/file-download-button.component';

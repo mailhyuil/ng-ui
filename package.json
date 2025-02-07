@@ -1,6 +1,5 @@
 {
   "name": "libs",
-  "version": "0.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +8,7 @@
     "lint": "ng lint",
     "build": "ng build ng-libs --configuration production",
     "pack": "cd dist/ng-libs && npm pack",
-    "patch": "npm version patch && cd projects/ng-libs && npm version patch && cd ../../",
+    "patch": "cd projects/ng-libs && npm version patch && cd ../../",
     "publish": "npm run patch && npm run build && cd dist/ng-libs && npm publish --access public && cd ../../"
   },
   "peerDependencies": {

@@ -8,13 +8,16 @@ import {
   signal,
 } from '@angular/core';
 import { AbstractControl, FormsModule, NgControl } from '@angular/forms';
+import {
+  EDITOR_IMAGE_SERVICE,
+  ErrorMessageComponent,
+  LabelComponent,
+  ValueAccessorDirective,
+} from '@mailhyuil/ng-libs';
+
 import { QuillEditorComponent, QuillModules } from 'ngx-quill';
 import Quill from 'quill';
 import ImageResizor from 'quill-image-resizor';
-import { ValueAccessorDirective } from '../../directives/value-accessor.directive';
-import { EDITOR_IMAGE_SERVICE } from '../../interfaces/image-service.interface';
-import { ErrorMessageComponent } from '../error-message/error-message.component';
-import { LabelComponent } from '../label/label.component';
 
 ImageResizor.Quill = Quill;
 Quill.register('modules/imageResizor', ImageResizor);
