@@ -15,7 +15,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "prepack": "npm version patch"
+    "prepack": "npm version patch",
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "@angular/animations": "^19.1.0",
