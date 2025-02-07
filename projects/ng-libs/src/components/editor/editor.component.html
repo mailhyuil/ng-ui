@@ -1,0 +1,23 @@
+<div class="flex flex-col gap-2">
+  <mh-label
+    [label]="label()"
+    [required]="required()"
+    [hints]="hints()"
+  ></mh-label>
+  <div class="container relative w-full">
+    <div
+      class="absolute top-0 left-0 z-10 transition-colors duration-300 pointer-events-none error-border w-full h-[calc(100%_-_5px)]"
+    ></div>
+    <quill-editor
+      class="size-full"
+      [ngModel]="value()"
+      (ngModelChange)="setValue($event)"
+      [modules]="modules"
+      [placeholder]="placeholder()"
+      (onEditorCreated)="onEditorCreated($event)"
+      (onBlur)="handleBlur()"
+    >
+    </quill-editor>
+  </div>
+</div>
+<mh-error-message [control]="control" [name]="label()"></mh-error-message>

@@ -1,0 +1,20 @@
+<mh-modal-header (dismiss)="dismiss()">
+  <h5>{{ title() }}</h5>
+</mh-modal-header>
+<mh-modal-content>
+  @let formatValue = format(); @if (formatValue === "html" || !formatValue) {
+  <p [innerHTML]="content()"></p>
+  } @else {
+  <p [innerText]="content()"></p>
+  }
+</mh-modal-content>
+<mh-modal-footer>
+  <div class="flex w-full gap-2">
+    @if (submit()) {
+    <mh-button (click)="dismiss()" expand>취소</mh-button>
+    <mh-button (click)="_submit()" expand color="danger">확인</mh-button>
+    } @else {
+    <mh-button (click)="dismiss()" expand>확인</mh-button>
+    }
+  </div>
+</mh-modal-footer>

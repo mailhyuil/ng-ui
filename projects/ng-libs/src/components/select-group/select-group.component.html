@@ -1,0 +1,21 @@
+<div class="relative flex flex-col w-full gap-1">
+  <mh-label [label]="label()" [required]="required()"></mh-label>
+  <input
+    class="w-full"
+    [ngModel]="value()"
+    (ngModelChange)="setValue($event)"
+    [placeholder]="placeholder()"
+    (click)="open()"
+    [readonly]="!search()"
+    (input)="searchValue($event)"
+  />
+  @if (isOpen()) {
+  <ul
+    class="absolute z-10 flex flex-col w-full gap-1 p-1 overflow-y-auto text-sm bg-white border rounded-md shadow-md max-h-52"
+    [ngClass]="directionMap[direction()]"
+    (clickOutside)="close()"
+  >
+    <ng-content></ng-content>
+  </ul>
+  }
+</div>

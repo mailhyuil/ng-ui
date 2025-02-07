@@ -1,0 +1,20 @@
+<div class="flex flex-col gap-1">
+  <div class="flex items-center gap-1">
+    <mh-label
+      [label]="label()"
+      [required]="required()"
+      [hints]="hints"
+    ></mh-label>
+  </div>
+  <input
+    numbersOnly
+    [ngModel]="value()"
+    (ngModelChange)="setValue($event)"
+    [placeholder]="placeholder()"
+    (keydown.space)="$event.preventDefault()"
+    [maxlength]="maxLength()"
+    type="tel"
+    (blur)="handleBlur()"
+  />
+</div>
+<mh-error-message [control]="control" [name]="label()"></mh-error-message>

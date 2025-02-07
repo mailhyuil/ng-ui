@@ -1,0 +1,14 @@
+<div class="flex flex-col h-full px-5 border-r">
+  <div class="flex items-center px-5 border-b py-7">
+    <img
+      [src]="logo()"
+      class="object-cover object-center w-auto h-7"
+      alt="seo"
+    />
+  </div>
+  <div class="flex flex-col gap-1 py-4">
+    @for (item of menus(); track item.title) {
+    <mh-side-menu-item [item]="item">{{ item.title }}</mh-side-menu-item>
+    }
+  </div>
+</div>

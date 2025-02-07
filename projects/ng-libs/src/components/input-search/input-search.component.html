@@ -1,0 +1,22 @@
+<div class="flex flex-col gap-1 group">
+  <mh-label [label]="label()" [required]="required()"></mh-label>
+  <div class="relative">
+    <input
+      class="!pr-10"
+      [ngModel]="value()"
+      (ngModelChange)="setValue($event)"
+      [placeholder]="placeholder()"
+      [type]="type()"
+      [maxlength]="maxLength()"
+      (blur)="handleBlur()"
+    />
+    <button
+      class="absolute flex items-center justify-center transition-colors duration-300 -translate-y-1/2 rounded right-2 top-1/2 size-6 hover:bg-gray-50"
+    >
+      <span
+        class="icon-[heroicons--magnifying-glass] size-5 group-hover:bg-blue-500 transition-colors duration-300"
+      ></span>
+    </button>
+  </div>
+</div>
+<mh-error-message [control]="control" [name]="label()"></mh-error-message>

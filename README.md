@@ -1,2 +1,1 @@
-# @hyuil/ng-ui
-# ng-ui
+# @hyuil/ng-libs
