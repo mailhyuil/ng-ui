@@ -13,14 +13,14 @@
     @if (submit()) {
     <button
       (click)="dismiss()"
-      class="text-center max-w-max disabled:opacity-50 rounded-md disabled:cursor-not-allowed size-full py-1.5 px-3 font-semibold text-sm transition-all duration-300 bg-danger-500"
+      class="text-center max-w-max text-white disabled:opacity-50 rounded-md disabled:cursor-not-allowed size-full py-1.5 px-3 font-semibold text-sm transition-all duration-300 bg-danger-500"
       type="button"
     >
       취소
     </button>
     <button
       (click)="_submit()"
-      class="text-center max-w-max disabled:opacity-50 rounded-md disabled:cursor-not-allowed size-full py-1.5 px-3 font-semibold text-sm transition-all duration-300 bg-success-500"
+      class="text-center max-w-max text-white disabled:opacity-50 rounded-md disabled:cursor-not-allowed size-full py-1.5 px-3 font-semibold text-sm transition-all duration-300 bg-success-500"
       type="button"
     >
       확인
@@ -28,7 +28,7 @@
     } @else {
     <button
       (click)="dismiss()"
-      class="text-center w-full disabled:opacity-50 rounded-md disabled:cursor-not-allowed size-full py-1.5 px-3 font-semibold text-sm transition-all duration-300 bg-success-500"
+      class="text-center w-full text-white disabled:opacity-50 rounded-md disabled:cursor-not-allowed size-full py-1.5 px-3 font-semibold text-sm transition-all duration-300 bg-success-500"
       type="button"
     >
       확인
