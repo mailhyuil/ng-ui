@@ -11,6 +11,7 @@
     "patch": "cd projects/ng-libs && npm version patch && cd ../../",
     "publish": "npm run patch && npm run build && cd dist/ng-libs && npm publish --access public && cd ../../"
   },
+  "homepage": "https://github.com/mailhyuil/ng-libs",
   "peerDependencies": {
     "@angular/animations": "^19.1.0",
     "@angular/common": "^19.1.0",
@@ -53,8 +54,5 @@
     "ng-packagr": "^19.1.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "8.18.0"
-  },
-  "dependencies": {
-    "tailwindcss": "^4.0.4"
   }
 }
