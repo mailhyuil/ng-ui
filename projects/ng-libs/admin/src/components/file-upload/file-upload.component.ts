@@ -7,12 +7,12 @@ import {
   model,
   output,
 } from '@angular/core';
-import { HintComponent } from '../hint/hint.component';
 import {
   FileSizePipe,
-  ValueAccessorDirective,
   ToastService,
+  ValueAccessorDirective,
 } from '@mailhyuil/ng-libs';
+import { HintComponent } from '../hint/hint.component';
 
 interface CurrentFile {
   id: string;
@@ -56,10 +56,11 @@ export class FileUploadComponent {
   uploadingUrls: string[] = [];
   isActive = false;
 
-  constructor(
-    public valueAccessor: ValueAccessorDirective<File | File[] | undefined>
-  ) {
-    valueAccessor.value.subscribe((value) => {
+  private readonly valueAccessor = inject(
+    ValueAccessorDirective<File | File[] | undefined>
+  );
+  constructor() {
+    this.valueAccessor.value.subscribe((value) => {
       if (!value) return;
       this.value = value;
 
