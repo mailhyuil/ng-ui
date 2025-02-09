@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ValueAccessorDirective } from '@mailhyuil/ng-libs';
 
 @Component({
@@ -12,8 +12,9 @@ import { ValueAccessorDirective } from '@mailhyuil/ng-libs';
 })
 export class InputCheckboxComponent {
   value = signal(false);
-  constructor(public readonly valueAccessor: ValueAccessorDirective<boolean>) {
-    valueAccessor.value.subscribe((v) => {
+  private readonly valueAccessor = inject(ValueAccessorDirective<boolean>);
+  constructor() {
+    this.valueAccessor.value.subscribe((v) => {
       this.value.set(v);
     });
   }

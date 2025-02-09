@@ -3,13 +3,14 @@ import {
   Component,
   contentChildren,
   ElementRef,
+  inject,
   model,
   signal,
   viewChild,
 } from '@angular/core';
+import { ValueAccessorDirective } from '@mailhyuil/ng-libs';
 import { tap } from 'rxjs';
 import { SegmentItemComponent } from '../segment-item/segment-item.component';
-import { ValueAccessorDirective } from '@mailhyuil/ng-libs';
 
 @Component({
   selector: 'mh-segment-group',
@@ -31,8 +32,9 @@ export class SegmentGroupComponent implements AfterViewInit {
   childrenWidth: number[] = [];
   childrenPosition: number[] = [];
 
-  constructor(public readonly valueAccessor: ValueAccessorDirective<string>) {
-    valueAccessor.value.subscribe((v) => {
+  private readonly valueAccessor = inject(ValueAccessorDirective<string>);
+  constructor() {
+    this.valueAccessor.value.subscribe((v) => {
       if (v != null) {
         this.value.set(v);
         setTimeout(() => {

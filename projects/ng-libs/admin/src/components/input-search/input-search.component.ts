@@ -7,12 +7,12 @@ import {
   signal,
 } from '@angular/core';
 import { AbstractControl, FormsModule, NgControl } from '@angular/forms';
-import { InputType } from '../input/input.component';
-import { LabelComponent } from '../label/label.component';
 import {
   ErrorMessageComponent,
   ValueAccessorDirective,
 } from '@mailhyuil/ng-libs';
+import { InputType } from '../input/input.component';
+import { LabelComponent } from '../label/label.component';
 
 @Component({
   selector: 'mh-input-search',
@@ -37,8 +37,9 @@ export class InputSearchComponent implements OnInit {
   type = input<InputType>('text');
   maxLength = input(100);
 
-  constructor(public readonly valueAccessor: ValueAccessorDirective<string>) {
-    valueAccessor.value.subscribe((v) => {
+  private readonly valueAccessor = inject(ValueAccessorDirective<string>);
+  constructor() {
+    this.valueAccessor.value.subscribe((v) => {
       this.value.set(v);
     });
   }

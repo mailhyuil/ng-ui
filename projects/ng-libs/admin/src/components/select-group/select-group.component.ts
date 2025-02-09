@@ -13,13 +13,13 @@ import {
   signal,
 } from '@angular/core';
 import { AbstractControl, FormsModule, NgControl } from '@angular/forms';
-import { tap } from 'rxjs';
-import { LabelComponent } from '../label/label.component';
-import { SelectItemComponent } from '../select-item/select-item.component';
 import {
   ClickOutsideDirective,
   ValueAccessorDirective,
 } from '@mailhyuil/ng-libs';
+import { tap } from 'rxjs';
+import { LabelComponent } from '../label/label.component';
+import { SelectItemComponent } from '../select-item/select-item.component';
 
 @Component({
   selector: 'mh-select-group',
@@ -54,8 +54,9 @@ export class SelectGroupComponent implements AfterViewInit, OnInit {
   control?: AbstractControl;
   search = input(false);
 
-  constructor(public readonly valueAccessor: ValueAccessorDirective<string>) {
-    valueAccessor.value.subscribe((v) => {
+  private readonly valueAccessor = inject(ValueAccessorDirective<string>);
+  constructor() {
+    this.valueAccessor.value.subscribe((v) => {
       if (v != null) {
         this.value.set(v);
         this.isOpen.set(false);

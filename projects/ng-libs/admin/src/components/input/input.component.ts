@@ -40,8 +40,10 @@ export class InputComponent implements OnInit {
   type = input<InputType>('text');
   maxLength = input(100);
   hints = input<string[]>([]);
-  constructor(public readonly valueAccessor: ValueAccessorDirective<string>) {
-    valueAccessor.value.subscribe((v) => {
+
+  private readonly valueAccessor = inject(ValueAccessorDirective<string>);
+  constructor() {
+    this.valueAccessor.value.subscribe((v) => {
       this.value.set(v);
     });
   }

@@ -6,11 +6,11 @@ import {
   signal,
 } from '@angular/core';
 import { AbstractControl, FormsModule, NgControl } from '@angular/forms';
-import { LabelComponent } from '../label/label.component';
 import {
   ErrorMessageComponent,
   ValueAccessorDirective,
 } from '@mailhyuil/ng-libs';
+import { LabelComponent } from '../label/label.component';
 
 @Component({
   selector: 'mh-input-textarea',
@@ -34,8 +34,10 @@ export class InputTextareaComponent {
   control?: AbstractControl;
   maxLength = input(1024);
   hints = input<string[]>([]);
-  constructor(public valueAccessor: ValueAccessorDirective<string>) {
-    valueAccessor.value.subscribe((v) => [this.value.set(v)]);
+
+  private readonly valueAccessor = inject(ValueAccessorDirective<string>);
+  constructor() {
+    this.valueAccessor.value.subscribe((v) => [this.value.set(v)]);
   }
 
   setValue(event: any) {

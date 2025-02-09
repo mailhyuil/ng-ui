@@ -13,11 +13,11 @@ import {
   ErrorMessageComponent,
   ValueAccessorDirective,
 } from '@mailhyuil/ng-libs';
+import { LabelComponent } from '@mailhyuil/ng-libs/admin';
 import { QuillEditorComponent, QuillModules } from 'ngx-quill';
 import Quill from 'quill';
 import ImageResizor from 'quill-image-resizor';
 import { EDITOR_IMAGE_SERVICE } from '../../public-api';
-import { LabelComponent } from '@mailhyuil/ng-libs/admin';
 
 ImageResizor.Quill = Quill;
 Quill.register('modules/imageResizor', ImageResizor);
@@ -52,11 +52,13 @@ export class EditorComponent implements OnInit {
     self: true,
   });
   control?: AbstractControl;
-  constructor(public valueAccessor: ValueAccessorDirective<string>) {
+
+  private readonly valueAccessor = inject(ValueAccessorDirective<string>);
+  constructor() {
     this.modules = {
       imageResizor: {},
     };
-    valueAccessor.value.subscribe((v) => {
+    this.valueAccessor.value.subscribe((v) => {
       this.value.set(v);
     });
   }

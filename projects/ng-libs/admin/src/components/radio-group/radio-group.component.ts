@@ -2,11 +2,12 @@ import {
   AfterViewInit,
   Component,
   contentChildren,
+  inject,
   signal,
 } from '@angular/core';
+import { ValueAccessorDirective } from '@mailhyuil/ng-libs';
 import { tap } from 'rxjs';
 import { RadioItemComponent } from '../radio-item/radio-item.component';
-import { ValueAccessorDirective } from '@mailhyuil/ng-libs';
 
 @Component({
   selector: 'mh-radio-group',
@@ -20,8 +21,9 @@ export class RadioGroupComponent implements AfterViewInit {
   radios = contentChildren(RadioItemComponent);
   value = signal<string | undefined>(undefined);
 
-  constructor(public readonly valueAccessor: ValueAccessorDirective<string>) {
-    valueAccessor.value.subscribe((v) => {
+  private readonly valueAccessor = inject(ValueAccessorDirective<string>);
+  constructor() {
+    this.valueAccessor.value.subscribe((v) => {
       if (v != null) {
         this.value.set(v);
         setTimeout(() => {

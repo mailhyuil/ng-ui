@@ -47,8 +47,9 @@ export class InputEmailComponent implements OnInit {
   ]);
   index = signal(0);
 
-  constructor(public readonly valueAccessor: ValueAccessorDirective<string>) {
-    valueAccessor.value.subscribe((v) => {
+  private readonly valueAccessor = inject(ValueAccessorDirective<string>);
+  constructor() {
+    this.valueAccessor.value.subscribe((v) => {
       this.value.set(v);
     });
   }

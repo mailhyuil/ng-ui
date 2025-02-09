@@ -7,12 +7,12 @@ import {
   signal,
 } from '@angular/core';
 import { AbstractControl, FormsModule, NgControl } from '@angular/forms';
-import { LabelComponent } from '../label/label.component';
 import {
   ErrorMessageComponent,
   NumbersOnlyDirective,
   ValueAccessorDirective,
 } from '@mailhyuil/ng-libs';
+import { LabelComponent } from '../label/label.component';
 
 @Component({
   selector: 'mh-input-tel',
@@ -42,8 +42,10 @@ export class InputTelComponent implements OnInit {
   type = input('text');
   maxLength = input(11);
   hints = ['"-" 없이 숫자만 입력해주세요'];
-  constructor(public readonly valueAccessor: ValueAccessorDirective<string>) {
-    valueAccessor.value.subscribe((v) => {
+
+  private readonly valueAccessor = inject(ValueAccessorDirective<string>);
+  constructor() {
+    this.valueAccessor.value.subscribe((v) => {
       this.value.set(v);
     });
   }
