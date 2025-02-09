@@ -14,14 +14,13 @@ import {
   ValueAccessorDirective,
 } from '@mailhyuil/ng-libs';
 import { LabelComponent } from '@mailhyuil/ng-libs/admin';
-import { QuillEditorComponent, QuillModules } from 'ngx-quill';
+import { CustomOption, QuillEditorComponent, QuillModules } from 'ngx-quill';
 import Quill from 'quill';
 import ImageResizor from 'quill-image-resizor';
 import { EDITOR_IMAGE_SERVICE } from '../../public-api';
 
 ImageResizor.Quill = Quill;
 Quill.register('modules/imageResizor', ImageResizor);
-
 @Component({
   selector: 'mh-editor',
   templateUrl: './editor.component.html',
@@ -52,7 +51,12 @@ export class EditorComponent implements OnInit {
     self: true,
   });
   control?: AbstractControl;
-
+  customOptions = input<CustomOption[]>([
+    {
+      import: 'formats/font',
+      whitelist: ['mirza', 'roboto', 'aref', 'serif', 'sansserif', 'monospace'],
+    },
+  ]);
   private readonly valueAccessor = inject(ValueAccessorDirective<string>);
   constructor() {
     this.modules = {
