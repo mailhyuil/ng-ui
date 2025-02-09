@@ -1,10 +1,10 @@
-import { ComponentType } from "@angular/cdk/portal";
-import { inject, Injectable, OnDestroy } from "@angular/core";
-import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { ModalComponent } from "../components/modal/modal.component";
+import { ComponentType } from '@angular/cdk/portal';
+import { inject, Injectable, OnDestroy } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ModalComponent } from '../components/modal/modal.component';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class ModalService implements OnDestroy {
   private readonly dialog = inject(MatDialog);
@@ -53,7 +53,7 @@ export class ModalService implements OnDestroy {
     title: string;
     content: string;
     submit: () => void;
-    format?: "html" | "text";
+    format?: 'html' | 'text';
   }) {
     this.create({
       component: ModalComponent,

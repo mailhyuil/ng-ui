@@ -10,8 +10,6 @@ export * from './pipes/tel.pipe';
 export * from './services/modal.service';
 export * from './services/toast.service';
 
-export * from './components/environment-badge/environment-badge.component';
-
 export * from './components/error-message/error-message.component';
 export * from './components/image/image.component';
 export * from './components/modal-content/modal-content.component';
