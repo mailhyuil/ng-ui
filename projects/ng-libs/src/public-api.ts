@@ -19,6 +19,9 @@ export * from './components/modal/modal.component';
 
 export * from './types/color.type';
 
+export * from './routes/custom-preload.strategy';
+export * from './routes/custom-route-reuse.strategy';
+
 export * from './utils/is-json-string';
 export * from './utils/key-value';
 export * from './utils/remove-html-tag';
