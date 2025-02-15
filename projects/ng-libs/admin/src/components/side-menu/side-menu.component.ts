@@ -1,8 +1,6 @@
-import { Component, inject, input, signal } from '@angular/core';
-import {
-  SIDE_MENU_ROUTES,
-  SideMenuItem,
-} from '../../types/side-menu-routes.interface';
+import { Component, input, signal } from '@angular/core';
+
+import { NgLibsRoute, SideMenuItem } from '@mailhyuil/ng-libs/admin';
 import { SideMenuItemComponent } from '../side-menu-item/side-menu-item.component';
 
 @Component({
@@ -15,16 +13,19 @@ import { SideMenuItemComponent } from '../side-menu-item/side-menu-item.componen
 export class SideMenuComponent {
   menus = signal<SideMenuItem[]>([]);
   logo = input.required<string>();
-  routes = inject(SIDE_MENU_ROUTES);
+  routes = input<NgLibsRoute[]>([]);
+
   constructor() {
     this.initMenus();
   }
+
   initMenus() {
-    if (!this.routes) {
-      throw new Error('providers에 SIDE_MENU_ROUTES를 추가해주세요.');
+    const routes = this.routes();
+    if (!routes) {
+      throw new Error('SideMenuComponent: routes is required');
     }
 
-    const menuRoutes = this.routes.filter((route) => !route.data?.menu?.skip);
+    const menuRoutes = routes.filter((route) => !route.data?.menu?.skip);
 
     const menus = menuRoutes.reduce((prev, cur) => {
       const menu: SideMenuItem = {
