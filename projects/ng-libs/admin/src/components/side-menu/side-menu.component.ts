@@ -1,5 +1,4 @@
-import { Component, input, signal } from '@angular/core';
-
+import { Component, computed, input } from '@angular/core';
 import { MhRoute, SideMenuItem } from '../../types/mh-route.interface';
 import { SideMenuItemComponent } from '../side-menu-item/side-menu-item.component';
 
@@ -11,15 +10,9 @@ import { SideMenuItemComponent } from '../side-menu-item/side-menu-item.componen
   styleUrls: ['./side-menu.component.scss'],
 })
 export class SideMenuComponent {
-  menus = signal<SideMenuItem[]>([]);
   logo = input.required<string>();
   routes = input<MhRoute[]>([]);
-
-  constructor() {
-    this.initMenus();
-  }
-
-  initMenus() {
+  menu = computed(() => {
     const routes = this.routes();
     if (!routes) {
       throw new Error('SideMenuComponent: routes is required');
@@ -27,7 +20,7 @@ export class SideMenuComponent {
 
     const menuRoutes = routes.filter((route) => !route.data?.menu?.skip);
 
-    const menus = menuRoutes.reduce((prev, cur) => {
+    const menuItems = menuRoutes.reduce((prev, cur) => {
       const menu: SideMenuItem = {
         title: '',
         icon: '',
@@ -51,9 +44,6 @@ export class SideMenuComponent {
       prev.push(menu);
       return prev;
     }, [] as SideMenuItem[]);
-
-    if (menus) {
-      this.menus.set(menus);
-    }
-  }
+    return menuItems;
+  });
 }

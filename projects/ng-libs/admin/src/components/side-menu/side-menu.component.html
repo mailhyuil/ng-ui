@@ -7,7 +7,7 @@
     />
   </div>
   <div class="flex flex-col gap-1 py-4">
-    @for (item of menus(); track item.title) {
+    @for (item of menu(); track item.title) {
     <mh-side-menu-item [item]="item">{{ item.title }}</mh-side-menu-item>
     }
   </div>
