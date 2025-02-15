@@ -9,7 +9,7 @@
     "build": "ng build ng-libs --configuration production",
     "pack": "cd dist/ng-libs && npm pack",
     "patch": "cd projects/ng-libs && npm version patch && cd ../../",
-    "publish": "npm run patch && npm run build && cd dist/ng-libs && npm publish --access public && cd ../../"
+    "publish": "npm run build && cd dist/ng-libs && npm publish --access public && cd ../../"
   },
   "homepage": "https://github.com/mailhyuil/ng-libs",
   "peerDependencies": {

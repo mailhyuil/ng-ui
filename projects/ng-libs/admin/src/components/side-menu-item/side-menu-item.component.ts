@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { Subscription, debounceTime, fromEvent } from 'rxjs';
-import { SideMenuItem } from '../../types/side-menu-routes.interface';
+import { SideMenuItem } from '../../types/mh-route.interface';
 
 @Component({
   selector: 'mh-side-menu-item',
