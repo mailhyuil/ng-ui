@@ -26,5 +26,4 @@ export * from './components/side-menu-item/side-menu-item.component';
 export * from './components/side-menu/side-menu.component';
 export * from './components/time-picker/time-picker.component';
 
-export * from './types/ng-libs-route.interface';
-export * from './types/side-menu-routes.interface';
+export * from './types/mh-route.interface';
