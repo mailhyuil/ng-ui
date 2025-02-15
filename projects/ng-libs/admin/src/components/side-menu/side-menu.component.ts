@@ -1,6 +1,6 @@
 import { Component, input, signal } from '@angular/core';
 
-import { NgLibsRoute, SideMenuItem } from '@mailhyuil/ng-libs/admin';
+import { MhRoute, SideMenuItem } from '../../types/mh-route.interface';
 import { SideMenuItemComponent } from '../side-menu-item/side-menu-item.component';
 
 @Component({
@@ -13,7 +13,7 @@ import { SideMenuItemComponent } from '../side-menu-item/side-menu-item.componen
 export class SideMenuComponent {
   menus = signal<SideMenuItem[]>([]);
   logo = input.required<string>();
-  routes = input<NgLibsRoute[]>([]);
+  routes = input<MhRoute[]>([]);
 
   constructor() {
     this.initMenus();
