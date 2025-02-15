@@ -7,7 +7,32 @@ input::-webkit-inner-spin-button {
 :host {
   textarea,
   input {
-    @apply w-full px-3 py-1.5 text-sm transition-all duration-300 outline outline-2 outline-gray-300 rounded-md focus:outline-blue-400 hover:outline-blue-300;
+    width: 100%;
+    border-radius: 0.375rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #d1d5db;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+  :hover {
+    input,
+    textarea {
+      outline-color: #93c5fd;
+    }
+  }
+  :focus {
+    input,
+    textarea {
+      outline-color: #60a5fa;
+    }
   }
 }
 
