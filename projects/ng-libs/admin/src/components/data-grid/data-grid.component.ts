@@ -1,5 +1,5 @@
 import { CdkContextMenuTrigger, CdkMenu, CdkMenuItem } from '@angular/cdk/menu';
-import { ComponentType } from '@angular/cdk/portal';
+import { type ComponentType } from '@angular/cdk/portal';
 import {
   Component,
   computed,
@@ -11,18 +11,17 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Color } from '@mailhyuil/ng-libs';
 import { NgxPaginationModule, PaginatePipeArgs } from 'ngx-pagination';
+import { Color } from '../../types/color.type';
 import { BadgeComponent } from '../badge/badge.component';
 import { InputSearchComponent } from '../input-search/input-search.component';
 import { SelectGroupComponent } from '../select-group/select-group.component';
 import { SelectItemComponent } from '../select-item/select-item.component';
-
 export interface BaseDataGridCol {
   label: string;
   field: 'rowNumber' | string;
   width?: string | number;
-  handleClick?: (data: unknown) => void;
+  clickHandler?: (data: unknown) => void;
 }
 
 export interface TextDataGridCol extends BaseDataGridCol {
@@ -63,7 +62,7 @@ export interface DataGridColFilterOptions {
 export interface DataGridOptions {
   name?: string;
   icon?: string;
-  handler?: (row: unknown) => void;
+  clickHandler?: (row: unknown) => void;
   contextMenus?: DataGridOptions[];
 }
 
@@ -179,8 +178,8 @@ export class DataGridComponent {
   handleClick(index: number) {
     const options = this.options();
     if (!options) return;
-    if (options.handler) {
-      options.handler(this.rows().at(Number(index)));
+    if (options.clickHandler) {
+      options.clickHandler(this.rows().at(Number(index)));
     }
   }
 

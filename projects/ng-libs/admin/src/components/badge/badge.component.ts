@@ -1,5 +1,5 @@
 import { Component, computed, input } from '@angular/core';
-import { Color } from '@mailhyuil/ng-libs';
+import { Color } from '../../types/color.type';
 
 @Component({
   selector: 'mh-badge',

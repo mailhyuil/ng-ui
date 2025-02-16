@@ -6,7 +6,7 @@ import {
   input,
   OnInit,
 } from '@angular/core';
-import { Color } from '@mailhyuil/ng-libs';
+import { Color } from '../../types/color.type';
 
 export type ButtonStyle = 'solid' | 'text';
 

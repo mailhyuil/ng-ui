@@ -17,8 +17,6 @@ export * from './components/modal-footer/modal-footer.component';
 export * from './components/modal-header/modal-header.component';
 export * from './components/modal/modal.component';
 
-export * from './types/color.type';
-
 export * from './routes/custom-preload.strategy';
 export * from './routes/custom-route-reuse.strategy';
 
