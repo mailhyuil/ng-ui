@@ -9,9 +9,18 @@ import { Color } from '@mailhyuil/ng-libs';
   imports: [],
 })
 export class BadgeComponent {
+  value = input('');
   color = input<Color>('primary');
   computedStyle = computed(() => {
     const color = this.color();
-    return `bg-${color}-600 text-white`;
+    if (color === 'primary') return `bg-primary-500 text-white`;
+    if (color === 'secondary') return `bg-secondary-500 text-white`;
+    if (color === 'tertiary') return `bg-tertiary-500 text-white`;
+    if (color === 'neutral') return `bg-neutral-500 text-white`;
+    if (color === 'success') return `bg-success-500 text-white`;
+    if (color === 'danger') return `bg-danger-500 text-white`;
+    if (color === 'warning') return `bg-warning-500 text-white`;
+    if (color === 'info') return `bg-info-500 text-white`;
+    return `bg-primary-600 text-white`;
   });
 }

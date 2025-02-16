@@ -1,35 +1,104 @@
+@let optionsValue = options();
 <div class="flex flex-col gap-2">
   <div class="flex items-center justify-between">
-    <mh-input-search placeholder="검색어를 입력해주세요"></mh-input-search>
+    <mh-input-search
+      placeholder="검색어를 입력해주세요"
+      [(ngModel)]="query"
+      (keydown.enter)="search()"
+      (handleClick)="search()"
+    ></mh-input-search>
     <div>
-      <ng-content select="button"></ng-content>
+      <ng-content></ng-content>
     </div>
   </div>
   <dl class="text-sm">
-    <div class="flex px-3 py-2 font-semibold border-b-2">
-      @for (col of cols(); track col.name) {
-      <dt class="flex-1 text-start">{{ col.name }}</dt>
+    <div class="flex font-semibold border-b-2">
+      @for (col of cols(); track col.field) {
+      <dt
+        [cdkContextMenuTriggerFor]="colContextMenu"
+        class="flex-1 px-3 py-2 rounded-lg cursor-pointer text-start hover:bg-neutral-50"
+      >
+        {{ col.label }}
+      </dt>
+      <ng-template #colContextMenu>
+        @if (col.field !== 'rowNumber' && optionsValue) {
+        <div
+          class="flex flex-col p-2 text-sm font-semibold bg-white border rounded-lg"
+          cdkMenu
+        >
+          <span class="pb-2">{{ col.label }}</span>
+          <span class="flex flex-col gap-2">
+            <span class="text-xs font-bold text-center">정렬</span>
+            <button
+              class="px-3 py-2 rounded-md hover:bg-neutral-50"
+              (click)="sort(col.field, 'asc')"
+              cdkMenuItem
+            >
+              오름차순
+            </button>
+            <button
+              class="px-3 py-2 rounded-md hover:bg-neutral-50"
+              (click)="sort(col.field, 'desc')"
+              cdkMenuItem
+            >
+              내림차순
+            </button>
+          </span>
+        </div>
+        }
+      </ng-template>
       }
     </div>
     <div class="flex flex-col">
-      @for (row of rowData() | paginate: paginateOptions(); track $index) {
-      <div class="flex px-3 py-2 border-b" [class.bg-gray-50]="$even">
-        @for (r of row; track $index) {
-        <dd class="flex-1 text-start">
-          {{ r | slice : 0 : 25 }}{{ r > 25 ? "..." : undefined }}
+      @for ( rowValue of rowValues() | paginate: paginateOptions(); track
+      rowValue.at(0) ) {
+      <div
+        #rowEle
+        class="flex border-b cursor-pointer hover:bg-neutral-100"
+        [class.bg-gray-50]="$even"
+        (click)="handleClick($index)"
+        (keyup.enter)="handleClick($index)"
+        [cdkContextMenuTriggerFor]="rowContextMenu"
+      >
+        @for (value of rowValue; track $index) {
+        <dd class="flex-1 px-3 py-2 text-start">
+          {{ value }}
+          @if(!value){
+          <ng-template #comp></ng-template>
+          }
         </dd>
         }
       </div>
+      <ng-template #rowContextMenu>
+        @if (optionsValue) {
+        <div
+          class="flex flex-col p-1 text-sm font-semibold bg-white border rounded-lg"
+          cdkMenu
+        >
+          @for (menu of optionsValue.contextMenus; track menu.name) {
+          <button
+            class="px-3 py-2 rounded-md hover:bg-neutral-50"
+            (click)="handleClick($index)"
+            cdkMenuItem
+          >
+            {{ menu.name }}
+          </button>
+          }
+        </div>
+        }
+      </ng-template>
       }
     </div>
   </dl>
   <div class="flex justify-between">
-    <mh-select-group [ngModel]="pageSize()" class="w-1/12" direction="up">
+    <mh-select-group [(ngModel)]="pageSize" class="w-1/12" direction="up">
       @for (size of pageSizes(); track size) {
       <mh-select-item [value]="size">{{ size }}</mh-select-item>
       }
     </mh-select-group>
     <pagination-controls
+      nextLabel="다음"
+      previousLabel="이전"
       (pageChange)="pageIndex.set($event)"
     ></pagination-controls>
   </div>

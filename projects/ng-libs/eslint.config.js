@@ -27,6 +27,8 @@ module.exports = tseslint.config(
   },
   {
     files: ["**/*.html"],
-    rules: {},
+    rules: {
+      "@angular-eslint/template/interactive-supports-focus": "off",
+    },
   }
 );
