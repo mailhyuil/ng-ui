@@ -1,6 +1,6 @@
 {
   "name": "@mailhyuil/ng-libs",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "Simple UI components for Angular",
   "author": "mailhyuil",
   "license": "MIT",
@@ -27,8 +27,7 @@
     "quill": "^2.0.3",
     "quill-image-resizor": "^2.0.0",
     "rxjs": "~7.8.0",
-    "swiper": "^11.2.2",
-    "zone.js": "~0.15.0"
+    "swiper": "^11.2.2"
   },
   "dependencies": {
     "tslib": "^2.3.0"
