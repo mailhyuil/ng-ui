@@ -17,53 +17,57 @@ import { BadgeComponent } from '../badge/badge.component';
 import { InputSearchComponent } from '../input-search/input-search.component';
 import { SelectGroupComponent } from '../select-group/select-group.component';
 import { SelectItemComponent } from '../select-item/select-item.component';
-export interface BaseDataGridCol {
-  label: string;
-  field: 'rowNumber' | string;
-  width?: string | number;
-  clickHandler?: (data: unknown) => void;
-}
 
-export interface TextDataGridCol extends BaseDataGridCol {
-  type?: 'text';
+export interface BaseDataGridCol<T> {
+  label: string;
+  width?: string | number;
+  clickHandler?: (data: T) => void;
+}
+export interface RowNumberDataGridCol<T> extends BaseDataGridCol<T> {
+  type: 'rowNumber';
+}
+export interface TextDataGridCol<T> extends BaseDataGridCol<T> {
+  type: 'text';
+  field: string;
   formatter?: (value: string) => unknown;
 }
-export interface NumberDataGridCol extends BaseDataGridCol {
-  type?: 'number';
+export interface NumberDataGridCol<T> extends BaseDataGridCol<T> {
+  type: 'number';
+  field: string;
   formatter?: (value: number) => unknown;
 }
-export interface DateDataGridCol extends BaseDataGridCol {
-  type?: 'date';
+export interface DateDataGridCol<T> extends BaseDataGridCol<T> {
+  type: 'date';
+  field: string;
   formatter?: (value: Date) => unknown;
 }
-export interface ComponentDataGridCol extends BaseDataGridCol {
-  type?: 'component';
+export interface ComponentDataGridCol<T> extends BaseDataGridCol<T> {
+  type: 'component';
+  field: string;
   component: ComponentType<unknown>;
   inputHandler: (row: unknown) => Record<string, string> | undefined;
 }
-
-export interface EnumDataGridCol extends BaseDataGridCol {
-  type?: 'enum';
+export interface EnumDataGridCol<T> extends BaseDataGridCol<T> {
+  type: 'enum';
+  field: string;
   enumMap: Record<string, string>;
   enumColorMap?: Record<string, Color>;
 }
-
-export type DataGridCol =
-  | TextDataGridCol
-  | NumberDataGridCol
-  | DateDataGridCol
-  | ComponentDataGridCol
-  | EnumDataGridCol;
-
-export interface DataGridColFilterOptions {
-  show?: boolean;
-}
-
-export interface DataGridOptions {
+export type DataGridCol<T = unknown> =
+  | TextDataGridCol<T>
+  | NumberDataGridCol<T>
+  | DateDataGridCol<T>
+  | ComponentDataGridCol<T>
+  | EnumDataGridCol<T>
+  | RowNumberDataGridCol<T>;
+export interface DataGridOptions<T = unknown> {
   name?: string;
   icon?: string;
-  clickHandler?: (row: unknown) => void;
-  contextMenus?: DataGridOptions[];
+  clickHandler?: (row: T) => void;
+  contextMenus?: DataGridOptions<T>[];
+}
+export interface DataGridColFilterOptions {
+  show?: boolean;
 }
 
 @Component({
@@ -110,10 +114,12 @@ export class DataGridComponent {
     return rows.map((row) => {
       const cols = this.cols();
       return cols.map((col) => {
-        let value = row[col.field];
-        if (col.field === 'rowNumber') {
+        if (col.type === 'rowNumber') {
           return String(rowNumber++);
         }
+
+        let value = row[col.field];
+
         if (col.type === 'enum') {
           const component = this.templates()
             .at(componentCount++)
