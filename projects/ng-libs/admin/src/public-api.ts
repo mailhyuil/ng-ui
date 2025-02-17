@@ -6,7 +6,6 @@ export * from './components/date-picker/date-picker.component';
 export * from './components/date-range/date-range.component';
 export * from './components/file-download-button/file-download-button.component';
 export * from './components/file-upload/file-upload.component';
-export * from './components/header/header.component';
 export * from './components/hint/hint.component';
 export * from './components/input-checkbox/input-checkbox.component';
 export * from './components/input-email/input-email.component';
@@ -22,9 +21,6 @@ export * from './components/segment-group/segment-group.component';
 export * from './components/segment-item/segment-item.component';
 export * from './components/select-group/select-group.component';
 export * from './components/select-item/select-item.component';
-export * from './components/side-menu-item/side-menu-item.component';
-export * from './components/side-menu/side-menu.component';
 export * from './components/time-picker/time-picker.component';
 
 export * from './types/color.type';
-export * from './types/mh-route.interface';
