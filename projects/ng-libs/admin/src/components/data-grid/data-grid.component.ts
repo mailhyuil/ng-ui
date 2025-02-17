@@ -45,7 +45,7 @@ export interface ComponentDataGridCol<T> extends BaseDataGridCol<T> {
   type: 'component';
   field: string;
   component: ComponentType<unknown>;
-  inputHandler: (row: unknown) => Record<string, string> | undefined;
+  inputHandler: (row: T) => Record<string, string> | undefined;
 }
 export interface EnumDataGridCol<T> extends BaseDataGridCol<T> {
   type: 'enum';
