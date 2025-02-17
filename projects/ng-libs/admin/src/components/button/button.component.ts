@@ -1,11 +1,5 @@
 import { NgClass } from '@angular/common';
-import {
-  booleanAttribute,
-  Component,
-  HostBinding,
-  input,
-  OnInit,
-} from '@angular/core';
+import { booleanAttribute, Component, computed, input } from '@angular/core';
 import { Color } from '../../types/color.type';
 
 export type ButtonStyle = 'solid' | 'text';
@@ -17,12 +11,21 @@ export type ButtonStyle = 'solid' | 'text';
   standalone: true,
   imports: [NgClass],
 })
-export class ButtonComponent implements OnInit {
+export class ButtonComponent {
   expand = input(false, { transform: booleanAttribute });
   color = input<Color>('primary');
   disabled = input(false);
   type = input<string>('button');
   variant = input<ButtonStyle>('solid');
+  computedStyle = computed(() => {
+    const width = this.expand() ? 'w-full' : 'max-w-max';
+    const color = this.color();
+    const style =
+      this.variant() === 'solid'
+        ? this.solidColorMap[color]
+        : this.textColorMap[color];
+    return `${style} ${width}`;
+  });
   solidColorMap: Record<Color, string> = {
     primary: 'bg-primary-500 text-white hover:opacity-70',
     secondary: 'bg-secondary-500 text-white hover:opacity-70',
@@ -45,16 +48,4 @@ export class ButtonComponent implements OnInit {
     info: 'text-info-500 hover:bg-info-50',
     medium: 'text-medium-500 hover:bg-medium-50',
   };
-
-  @HostBinding('class') class = '';
-
-  ngOnInit(): void {
-    const inputValues = [];
-    if (this.expand()) {
-      inputValues.push('w-full');
-    } else {
-      inputValues.push('max-w-max');
-    }
-    this.class = inputValues.join(' ');
-  }
 }

@@ -88,8 +88,9 @@ export interface DataGridColFilterOptions {
 })
 export class DataGridComponent {
   rows = model<any[]>([]);
-  cols = input<DataGridCol[]>([]);
-  options = input<DataGridOptions>();
+  cols = input<DataGridCol<any>[]>([]);
+  options = input<DataGridOptions<any>>();
+
   pageSizes = input<string[]>(['10', '20', '50', '100']);
   pageSize = model(this.pageSizes()[0]);
   pageIndex = signal(1);
