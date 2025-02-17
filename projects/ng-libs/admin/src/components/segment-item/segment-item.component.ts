@@ -1,3 +1,4 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, input, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 
@@ -6,7 +7,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
   templateUrl: './segment-item.component.html',
   styleUrls: ['./segment-item.component.scss'],
   standalone: true,
-  imports: [],
+  imports: [AsyncPipe],
 })
 export class SegmentItemComponent implements OnDestroy {
   value = input<string | undefined>(undefined);

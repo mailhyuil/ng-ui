@@ -1,10 +1,9 @@
-@let v = value();
-
+@let v = value(); @let selectedValueValue = selectedValue$ | async;
 <li
   class="px-3 py-1.5 cursor-pointer hover:bg-blue-50 rounded hover:text-blue-500 list-none"
-  [class.bg-blue-50]="selectedValue$.value === v"
-  [class.text-blue-500]="selectedValue$.value === v"
-  [class.text-gray-400]="selectedValue$.value !== v"
+  [class.bg-blue-50]="selectedValueValue === v"
+  [class.text-blue-500]="selectedValueValue === v"
+  [class.text-gray-400]="selectedValueValue !== v"
   [class.hidden]="hidden()"
   (click)="_select()"
 >

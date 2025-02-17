@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import { booleanAttribute, Component, computed, input } from '@angular/core';
 import { Color } from '../../types/color.type';
 
@@ -9,7 +8,7 @@ export type ButtonStyle = 'solid' | 'text';
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
   standalone: true,
-  imports: [NgClass],
+  imports: [],
 })
 export class ButtonComponent {
   expand = input(false, { transform: booleanAttribute });

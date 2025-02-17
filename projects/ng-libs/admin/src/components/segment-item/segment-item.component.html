@@ -1,9 +1,8 @@
-@let v = value();
-
+@let v = value(); @let selectedValueValue = selectedValue$ | async;
 <button
   class="px-2 py-2 font-bold transition-all duration-300 w-max"
-  [class.text-gray-800]="selectedValue$.value === v"
-  [class.text-gray-400]="selectedValue$.value !== v"
+  [class.text-gray-800]="selectedValueValue === v"
+  [class.text-gray-400]="selectedValueValue !== v"
   (click)="_select()"
 >
   <ng-content></ng-content>

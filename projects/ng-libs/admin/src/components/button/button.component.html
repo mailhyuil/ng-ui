@@ -1,6 +1,8 @@
 <button
-  class="text-center disabled:opacity-50 rounded-md disabled:cursor-not-allowed h-full py-1.5 px-3 font-semibold text-sm transition-all duration-300"
-  [ngClass]="computedStyle()"
+  [class]="
+    'text-center disabled:opacity-50 rounded-md disabled:cursor-not-allowed h-full py-1.5 px-3 font-semibold text-sm transition-opacity duration-300 ' +
+    computedStyle()
+  "
   [disabled]="disabled()"
   [type]="type()"
 >

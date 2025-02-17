@@ -1,3 +1,4 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, input, OnDestroy, signal } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 
@@ -6,7 +7,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
   templateUrl: './select-item.component.html',
   styleUrls: ['./select-item.component.scss'],
   standalone: true,
-  imports: [],
+  imports: [AsyncPipe],
 })
 export class SelectItemComponent implements OnDestroy {
   value = input<string | undefined>(undefined);

@@ -1,3 +1,4 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, input, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 
@@ -6,7 +7,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
   templateUrl: './radio-item.component.html',
   styleUrls: ['./radio-item.component.scss'],
   standalone: true,
-  imports: [],
+  imports: [AsyncPipe],
 })
 export class RadioItemComponent implements OnDestroy {
   value = input<string | undefined>(undefined);

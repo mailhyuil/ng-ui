@@ -1,18 +1,21 @@
-@let v = value();
+@let v = value(); @let selectedValueValue = selectedValue$ | async;
 <label class="flex items-center gap-2 cursor-pointer group">
-  <span class="flex items-center justify-center duration-300 border-2 rounded-full cursor-pointer size-5 transition-color"
-    [class.border-blue-500]="selectedValue$.value === v"
-    [class.group-hover:border-blue-200]="selectedValue$.value !== v"
-    [class.group-active:border-blue-400]="selectedValue$.value !== v"
+  <span
+    class="flex items-center justify-center duration-300 border-2 rounded-full cursor-pointer size-5 transition-color"
+    [class.border-blue-500]="selectedValueValue === v"
+    [class.group-hover:border-blue-200]="selectedValueValue !== v"
+    [class.group-active:border-blue-400]="selectedValueValue !== v"
   >
     <input
       class="duration-300 rounded-full cursor-pointer size-3 transition-color"
-      [class.bg-blue-500]="selectedValue$.value === v"
-      [class.group-hover:bg-blue-200]="selectedValue$.value !== v"
-      [class.group-active:bg-blue-400]="selectedValue$.value !== v"
+      [class.bg-blue-500]="selectedValueValue === v"
+      [class.group-hover:bg-blue-200]="selectedValueValue !== v"
+      [class.group-active:bg-blue-400]="selectedValueValue !== v"
       (click)="_select()"
       type="button"
-    >
+    />
   </span>
-  <span class="text-sm font-semibold text-gray-700"><ng-content></ng-content></span>
+  <span class="text-sm font-semibold text-gray-700"
+    ><ng-content></ng-content
+  ></span>
 </label>
